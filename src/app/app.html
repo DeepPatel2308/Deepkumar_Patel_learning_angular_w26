@@ -1,9 +1,10 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <title>Hello World</title>
-</head>
-<body>
-  <h1>My name is {{"Deepkumar Patel"}}</h1>
-</body>
-</html>
+<div class="container">
+  <h1><i>Restaurant Menu</i></h1>
+  <div *ngFor="let Restaurant of restaurantMenuList" class="restaurant-menu"><br><br>
+    <p><b>Item Name:</b> {{ Restaurant.Name}}</p>
+    <p><b>Price:</b> {{ Restaurant.Price}}</p>
+    <p><b>Category:</b> {{ Restaurant.Category}}</p>
+    <p><b>Quantity:</b> {{ Restaurant.Quantity}}</p>
+    <p><b>Description:</b> {{ Restaurant.Description}}</p><br><br>
+  </div>
+</div>
