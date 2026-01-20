@@ -1,12 +1,22 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import {Restaurant} from './models/restaurant.Menu';
+import {NgForOf} from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, NgForOf],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
   title:string = 'Deepkumar Patel';
+  //initializing an array with at least 6 instances of the object
+  reataurantManuList: Restaurant[] = [
+    {Name: "Manchurian", Price: 12, Category: "Starter", Quantity: 250, Description: "Prepared with tomato pury."},
+    {Name: "Paneer Tikka", Price: 18, Category: "Starter", Quantity: 200, Description: "Prepared with migrated cubes of paneer."},
+    {Name: "Paneer Butter Masala", Price: 23, Category: "Main Course", Quantity: 280, Description: "Prepared with gray with paneer."},
+    {Name: "Fries", Price: 16, Category: "Starter", Quantity: 300, Description: "Prepared with patato fries."},
+    {Name: "Zira Rice", Price: 9, Category: "Main Course", Quantity: 300, Description: "Prepared with zira flavoured rice."}
+  ]
 }
