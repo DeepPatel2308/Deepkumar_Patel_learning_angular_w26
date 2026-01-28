@@ -1,1 +1,7 @@
-<p>restaurant-menu-detail works!</p>
+<div class="restaurant-menu" *ngIf="restaurant" [ngClass]="{'even-row': (index ?? 0) % 2 === 0, 'odd-row': (index ?? 0) % 2 !== 0}">
+  <p><b>Item Name:</b> {{ restaurant.Name}}</p>
+  <p><b>Price:</b> ${{ restaurant.Price}}</p>
+  <p><b>Category:</b> {{ restaurant.Category}}</p>
+  <p><b>Quantity:</b> {{ restaurant.Quantity}}g</p>
+  <p><b>Description:</b> {{ restaurant.Description}}</p><br><br>
+</div>
