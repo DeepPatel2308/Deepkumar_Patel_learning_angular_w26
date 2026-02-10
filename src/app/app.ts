@@ -7,7 +7,7 @@ import {RestaurantMenuDetail} from './restaurant-menu-detail/restaurant-menu-det
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RestaurantMenuList, RestaurantMenuDetail],
+  imports: [RestaurantMenuList, RestaurantMenuDetail, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

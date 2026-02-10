@@ -1,7 +1,11 @@
-<div class="container">
-  <h2>Single Menu Details (ID:5):</h2>
-  <app-restaurant-menu-detail [restaurant]="restaurantMenuList[4]"></app-restaurant-menu-detail>
-  <hr style="margin: 20px 0;">
-  <h2>Full Menu List:</h2>
-  <app-restaurant-menu-list></app-restaurant-menu-list>
+<!-- Future Nav bar-->
+<div class="nav-bar">
+  <nav>
+    <a routerLink="/restaurant-menu" routerLinkActive="active">Restaurant Menu</a>
+  </nav>
+</div>
+<div class="app-container">
+  <h1>{{ title }}</h1>
+  <!--router outlet to display routed components -->
+  <router-outlet></router-outlet>
 </div>
