@@ -1,4 +1,5 @@
 <div class="restaurant-menu" *ngIf="restaurant" [ngClass]="{'even-row': (index ?? 0) % 2 === 0, 'odd-row': (index ?? 0) % 2 !== 0}">
+  <p><b>Menu Id:</b> {{ restaurant.Id }}</p>
   <p><b>Item Name:</b> {{ restaurant.Name}}</p>
   <p><b>Price:</b> ${{ restaurant.Price}}</p>
   <p><b>Category:</b> {{ restaurant.Category}}</p>
