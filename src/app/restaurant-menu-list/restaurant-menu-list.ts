@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import {RestaurantMenuDetail} from '../restaurant-menu-detail/restaurant-menu-detail';
 import {CommonModule} from '@angular/common';
 import { Restaurant } from '../models/restaurant.Menu';
+// @ts-ignore
 @Component({
   selector: 'app-restaurant-menu-list',
-  imports: [RestaurantMenuDetail,CommonModule],
+  imports: [CommonModule, RestaurantMenuDetail],
   templateUrl: './restaurant-menu-list.html',
   styleUrl: './restaurant-menu-list.css',
 })
