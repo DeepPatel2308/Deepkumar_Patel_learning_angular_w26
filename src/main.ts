@@ -1,4 +1,4 @@
-import { provideRouter} from '@angular/router';
+import {provideRouter, Routes} from '@angular/router';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
 import { App } from './app/app';
@@ -8,10 +8,15 @@ import {RestaurantMenuDetail} from './app/restaurant-menu-detail/restaurant-menu
 import {ModifyListItem} from './app/modify-list-item/modify-list-item';
 import {PageNotFound} from './app/page-not-found/page-not-found';
 
-const routes = [
+const routes: Routes = [
   { path:'', redirectTo: '/restaurant-menu', pathMatch:'full'},
   { path: 'restaurant-menu', component: RestaurantMenuList},
-  { path: 'reataurant-menu/:id', component: RestaurantMenuDetail},
-  { path:'modify-list-item', component: ModifyListItem},
+  { path: 'restaurant-menu', component: RestaurantMenuDetail},
+  { path:'restaurant-menu', component: ModifyListItem},
   { path: '**', component:PageNotFound}
 ];
+
+// @ts-ignore
+bootstrapApplication(App, {
+  providers: [provideRouter(routes)]
+}).then(r => console.log('Bootstrap successful'));
