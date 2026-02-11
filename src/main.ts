@@ -10,9 +10,9 @@ import {PageNotFound} from './app/page-not-found/page-not-found';
 
 const routes: Routes = [
   { path:'', redirectTo: '/restaurant-menu', pathMatch:'full'},
-  { path: 'restaurant-menu', component: RestaurantMenuList},
-  { path: 'restaurant-menu', component: RestaurantMenuDetail},
-  { path:'restaurant-menu', component: ModifyListItem},
+  { path: 'restaurant-menu-list', component: RestaurantMenuList},
+  { path: 'restaurantMenu', component: RestaurantMenuDetail},
+  { path:'modify-menu', component: ModifyListItem},
   { path: '**', component:PageNotFound}
 ];
 
