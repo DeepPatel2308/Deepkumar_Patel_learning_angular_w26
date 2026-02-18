@@ -45,4 +45,8 @@ export class RestaurantMenuService {
     }
     return of(undefined);
   }
+
+  generateNewId(): number {
+    return Math.max(...this.menu.map(m => m.Id)) + 1;
+  }
 }
