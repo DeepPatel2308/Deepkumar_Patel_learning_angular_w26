@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { FormBuilder, Validators,} from '@angular/forms';
 import {FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ActivatedRoute, Router, RouterLink} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink, RouterLinkActive} from '@angular/router';
 import { RestaurantMenuService} from '../services/restaurant-menu';
 import { Restaurant } from '../models/restaurant.Menu';
 import {restaurantMenuList} from '../data/mock-restaurant-menu';
@@ -13,7 +13,8 @@ import {restaurantMenuList} from '../data/mock-restaurant-menu';
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    RouterLinkActive
   ],
   templateUrl: './modify-list-item.html',
   styleUrl: './modify-list-item.css',
