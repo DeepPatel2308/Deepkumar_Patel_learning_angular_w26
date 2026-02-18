@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import { FormBuilder, Validators,} from '@angular/forms';
 import {FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import { RestaurantMenuService} from '../services/restaurant-menu';
 import { Restaurant } from '../models/restaurant.Menu';
+import {restaurantMenuList} from '../data/mock-restaurant-menu';
 
 
 @Component({
@@ -11,7 +12,8 @@ import { Restaurant } from '../models/restaurant.Menu';
   standalone: true,
   imports: [
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink
   ],
   templateUrl: './modify-list-item.html',
   styleUrl: './modify-list-item.css',
@@ -58,7 +60,7 @@ export class ModifyListItem implements OnInit{
   const list: Restaurant = this.listForm.value
 
 
-  if (!isNaN(Number(list.Id))) {
+  if (!this.list) {
     this.restaurantMenuService.update(list).subscribe(() => {this.router.navigate(["/lists"])});
   } else {
     list.Id = this.restaurantMenuService.generateNewId();
@@ -76,4 +78,5 @@ export class ModifyListItem implements OnInit{
   }
 
   protected readonly navigator = navigator;
+  protected readonly restaurantMenuList = restaurantMenuList;
 }

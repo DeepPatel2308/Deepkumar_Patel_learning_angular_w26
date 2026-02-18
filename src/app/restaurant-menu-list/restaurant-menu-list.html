@@ -1,3 +1,12 @@
-<app-restaurant-menu-detail *ngFor="let Restaurant of restaurantMenuList;
-let i = index" [restaurant] = "Restaurant"
-                            [index]="i"></app-restaurant-menu-detail>
+<h2>Restaurant Menu</h2>
+
+<div *ngFor="let item of menuList" class="menu-item">
+  <p><strong>{{ item.Id }}</strong> — {{ item.Name }} ({{ item.Price }})</p>
+
+  <button [routerLink]="['/modify', item.Id]">Edit</button>
+  <button (click)="onDelete(item.Id)">Delete</button>
+</div>
+
+<br>
+
+<button routerLink="/modify">Add New Item</button>
