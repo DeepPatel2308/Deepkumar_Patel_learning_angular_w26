@@ -39,3 +39,11 @@ h1{
   color: #007bff;
 }
 
+.app-container {
+  padding: 20px; /* Padding around the main content */
+  max-width: 800px; /* Max width for the content area */
+  margin: 20px auto; /* Center the content */
+  background-color: #ffffff; /* White background */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow for a lifted effect */
+  border-radius: 8px; /* Rounded corners */
+}

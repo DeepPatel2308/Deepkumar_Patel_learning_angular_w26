@@ -1,12 +1,13 @@
-<h2>Restaurant Menu</h2>
-
-<div *ngFor="let item of menuList" class="menu-item">
-  <p><strong>{{ item.Id }}</strong> — {{ item.Name }} ({{ item.Price }})</p>
-
-  <button routerLink='/modify-menu'>Edit</button>
-  <button (click)="onDelete(item.Id)">Delete</button>
+<br><div *ngFor="let item of menuList" class="menu-item">
+  <p align="center"><strong>{{ item.Id }}</strong> . {{ item.Name }} - ${{ item.Price }}</p>
+  <div align="center">
+  <button routerLink='/modify-menu' style="margin-right: 10px;">Edit</button>
+  <button (click)="onDelete(item.Id)">X</button>
+  </div>
 </div>
 
 <br>
-
+<br>
+<div align="center">
 <button routerLink="/modify-menu">Add New Item</button>
+</div>

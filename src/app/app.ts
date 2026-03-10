@@ -12,7 +12,7 @@ import {RestaurantMenuDetail} from './restaurant-menu-detail/restaurant-menu-det
   styleUrl: './app.css'
 })
 export class App {
-  title: string = 'Deepkumar Patel';
+  title: string = 'MENU';
   protected readonly indexedDB = indexedDB;
   protected readonly restaurantMenuList = restaurantMenuList;
 }
