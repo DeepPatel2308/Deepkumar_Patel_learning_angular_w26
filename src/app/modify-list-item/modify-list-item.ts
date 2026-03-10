@@ -5,6 +5,7 @@ import {ActivatedRoute, Router, RouterLink, RouterLinkActive} from '@angular/rou
 import { RestaurantMenuService} from '../services/restaurant-menu';
 import { Restaurant } from '../models/restaurant.Menu';
 import {restaurantMenuList} from '../data/mock-restaurant-menu';
+import {NgIf} from '@angular/common';
 
 
 @Component({
@@ -14,7 +15,7 @@ import {restaurantMenuList} from '../data/mock-restaurant-menu';
     FormsModule,
     ReactiveFormsModule,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
   ],
   templateUrl: './modify-list-item.html',
   styleUrl: './modify-list-item.css',
@@ -22,24 +23,26 @@ import {restaurantMenuList} from '../data/mock-restaurant-menu';
 export class ModifyListItem implements OnInit{
 
   //create needed vars
-  listForm!: FormGroup;
+  listForm: FormGroup;
   list: Restaurant | undefined;
   error: string | null = null;
 
   constructor(private restaurantMenuService: RestaurantMenuService,
               private fb: FormBuilder,
               private router: Router,
-              private route: ActivatedRoute){}
+              private route: ActivatedRoute
+  ){
+    this.listForm = this.fb.group({
+      Id: [restaurantMenuService.generateNewId()],
+      Name: ['', Validators.required],
+      Price: [''],
+      Category: [''],
+      Quantity: [''],
+      Description: ['']
+    });
+  }
 
   ngOnInit() {
-      this.listForm = this.fb.group({
-        Id: ["",Validators.required],
-        Name: ["", Validators.required],
-        Price: [""],
-        Category: [""],
-        Quantity: [""],
-        Description: [""]
-      });
     const id = Number(this.route.snapshot.paramMap.get('id'));
     if(id){
       this.restaurantMenuService.getById(id).subscribe({
@@ -57,15 +60,16 @@ export class ModifyListItem implements OnInit{
   }
 }
   onSubmit() :void {
-  if(this.listForm.invalid) return;
-  const list: Restaurant = this.listForm.value
+  if(this.listForm.valid) {
+    const list: Restaurant = this.listForm.value
 
 
-  if (!this.list) {
-    this.restaurantMenuService.update(list).subscribe(() => {this.router.navigate(["/lists"])});
-  } else {
-    list.Id = this.restaurantMenuService.generateNewId();
-    this.restaurantMenuService.create(list).subscribe(() => this.router.navigate(["/lists"]));
+    if (this.list) {
+      this.restaurantMenuService.update(list).subscribe(() => {this.router.navigate(["/lists"])});
+    } else {
+      list.Id = this.restaurantMenuService.generateNewId();
+      this.restaurantMenuService.create(list).subscribe(() => this.router.navigate(["/lists"]));
+    }
   }
 
   }
@@ -78,6 +82,7 @@ export class ModifyListItem implements OnInit{
     }
   }
 
-  protected readonly navigator = navigator;
-  protected readonly restaurantMenuList = restaurantMenuList;
+  navigateToList(): void {
+    this.router.navigate(['/lists']);
+  }
 }

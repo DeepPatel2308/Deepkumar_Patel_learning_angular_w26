@@ -1,52 +1,51 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import {catchError, Observable, of, throwError} from 'rxjs';
 import { Restaurant } from '../models/restaurant.Menu';
 import { restaurantMenuList } from '../data/mock-restaurant-menu';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestaurantMenuService {
-
+  private apiUrl = 'api/restaurantMenuList';
   private menu: Restaurant[] = restaurantMenuList;
-
-  constructor() {}
+  constructor(private http: HttpClient) { }
 
   getAll(): Observable<Restaurant[]> {
-    return of(this.menu);
+    return this.http.get<Restaurant[]>(this.apiUrl).pipe(catchError(this.handleError));
   }
 
-  //read method
-  getById(id: number): Observable<Restaurant | undefined> {
-    return of(this.menu.find(item => item.Id === id));
+  //get menu item by id
+  getById(id: number): Observable<Restaurant> {
+    return this.http.get<Restaurant>(`${this.apiUrl}/${id}`).pipe(catchError(this.handleError));
   }
 
-  // create method
-  create(item: Restaurant): Observable<Restaurant[]> {
-    this.menu.push(item);
-    return of(this.menu);
+  //add menu item
+  create(item: Restaurant): Observable<Restaurant> {
+    item.Id = this.generateNewId();
+    return this.http.post<Restaurant>(this.apiUrl, item).pipe(catchError(this.handleError));
   }
 
-  // update method
-  update(item: Restaurant): Observable<Restaurant[]> {
-    const index = this.menu.findIndex(m => m.Id === item.Id);
-    if (index !== -1) {
-      this.menu[index] = item;
-    }
-    return of(this.menu);
+  // updating the menu item
+  update(item: Restaurant): Observable<Restaurant | undefined> {
+    const url = `${this.apiUrl}/${item.Id}`;
+    return this.http.put<Restaurant>(url, item).pipe(catchError(this.handleError));
   }
 
-  // delete method
-  delete(id: number): Observable<Restaurant | undefined> {
-    const index = this.menu.findIndex(m => m.Id === id);
-    if (index !== -1) {
-      const removed = this.menu.splice(index, 1)[0];
-      return of(removed);
-    }
-    return of(undefined);
+  // delete menu item
+  delete(id: number): Observable<{}> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete(url).pipe(catchError(this.handleError));
   }
 
   generateNewId(): number {
-    return Math.max(...this.menu.map(m => m.Id)) + 1;
+    return this.menu.length > 0 ? Math.max(...this.menu.map(m => m.Id)) + 1 : 1;
+  }
+
+  //error handler
+  private handleError(error: HttpErrorResponse){
+    console.error('API error:', error);
+    return throwError(() => new Error('Server error, please try again.'));
   }
 }
