@@ -1,12 +1,13 @@
 <br><div *ngFor="let item of menuList" class="menu-item">
-  <p align="center"><strong>{{ item.Id }}</strong> . {{ item.Name }} - ${{ item.Price }}</p>
+  <p align="center"><strong>{{ item.Name }}</strong> - ${{ item.Price }}<br>
+    Category: {{item.Category}}<br>
+  Description: {{item.Description}}</p>
   <div align="center">
   <button routerLink='/modify-menu' style="margin-right: 10px;">Edit</button>
-  <button (click)="onDelete(item.Id)">X</button>
+  <button (click)="onDelete(item.Id)">X</button><br><br><br>
   </div>
 </div>
 
-<br>
 <br>
 <div align="center">
 <button routerLink="/modify-menu">Add New Item</button>
