@@ -1,7 +1,9 @@
 <br><div *ngFor="let item of menuList" class="menu-item">
-  <p align="center"><strong>{{ item.Name }}</strong> - ${{ item.Price }}<br>
-    Category: {{item.Category}}<br>
-  Description: {{item.Description}}</p>
+  <p align="center"><strong>{{ item.Name }}</strong> - {{ item.Price | currency: 'CAD': "symbol-narrow"}}<br>
+    Category: {{item.Category | uppercase}}<br>
+  Description: {{item.Description}}<br>
+  Added On: {{item.Date | date}}
+  </p>
   <div align="center">
   <button routerLink='/modify-menu' style="margin-right: 10px;">Edit</button>
   <button (click)="onDelete(item.Id)">X</button><br><br><br>

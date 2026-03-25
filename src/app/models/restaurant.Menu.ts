@@ -5,4 +5,5 @@ export interface Restaurant {
   Category: string;
   Quantity: number;
   Description?: string;
+  Date: Date;
 }
