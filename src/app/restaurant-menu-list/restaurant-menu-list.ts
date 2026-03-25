@@ -4,6 +4,7 @@ import {CommonModule, NgFor, NgForOf, NgIf} from '@angular/common';
 import { Restaurant } from '../models/restaurant.Menu';
 import { RouterLink } from '@angular/router';
 import { RestaurantMenuService } from '../services/restaurant-menu';
+import { NameCategoryPipe } from '../pipes/name-category-pipe';
 
 // @ts-ignore
 @Component({
@@ -12,7 +13,8 @@ import { RestaurantMenuService } from '../services/restaurant-menu';
   imports: [
     NgForOf,
     RouterLink,
-    CommonModule
+    CommonModule,
+    NameCategoryPipe
   ],
   templateUrl: './restaurant-menu-list.html',
   styleUrl: './restaurant-menu-list.css',
