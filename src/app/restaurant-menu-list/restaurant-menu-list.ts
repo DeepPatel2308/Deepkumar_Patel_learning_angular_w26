@@ -6,7 +6,7 @@ import { RouterLink } from '@angular/router';
 import { RestaurantMenuService } from '../services/restaurant-menu';
 import { NameCategoryPipe } from '../pipes/name-category-pipe';
 
-// @ts-ignore
+
 @Component({
   selector: 'app-restaurant-menu-list',
   standalone: true,
