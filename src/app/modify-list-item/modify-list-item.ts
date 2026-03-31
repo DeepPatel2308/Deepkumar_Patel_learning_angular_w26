@@ -7,6 +7,7 @@ import { Restaurant } from '../models/restaurant.Menu';
 import {restaurantMenuList} from '../data/mock-restaurant-menu';
 import {NgIf} from '@angular/common';
 import {AutoFocusDirective} from '../directives/auto-focus';
+import {DisableButtonDirective} from '../directives/disable-button';
 
 
 @Component({
@@ -18,6 +19,7 @@ import {AutoFocusDirective} from '../directives/auto-focus';
     RouterLink,
     RouterLinkActive,
     AutoFocusDirective,
+    DisableButtonDirective,
   ],
   templateUrl: './modify-list-item.html',
   styleUrl: './modify-list-item.css',
@@ -87,4 +89,6 @@ export class ModifyListItem implements OnInit{
   navigateToList(): void {
     this.router.navigate(['/lists']);
   }
+
+  protected readonly restaurantMenuList = restaurantMenuList;
 }

@@ -24,7 +24,7 @@
     <textarea id="Description" formControlName="Description"></textarea>
   </div>
 
-  <button type="submit">Submit</button>
+  <button type="submit" [appDisableButton]="listForm">Submit</button>
 
   <button type="button" (click)="onDelete()">Delete</button>
 

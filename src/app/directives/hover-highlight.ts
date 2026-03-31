@@ -7,6 +7,7 @@ import {Directive, ElementRef, HostListener, Input} from '@angular/core';
 export class HoverHighlightDirective {
 
   @Input() appHoverHighlight = '';
+  @Input() appTextColor!: any;
   constructor(private el: ElementRef) { }
  @HostListener('mouseenter') onMouseEnter(){
     this.highlight(this.appHoverHighlight || 'yellow');
