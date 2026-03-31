@@ -5,6 +5,7 @@ import { Restaurant } from '../models/restaurant.Menu';
 import { RouterLink } from '@angular/router';
 import { RestaurantMenuService } from '../services/restaurant-menu';
 import { NameCategoryPipe } from '../pipes/name-category-pipe';
+import {HoverHighlightDirective} from '../directives/hover-highlight';
 
 
 @Component({
@@ -14,7 +15,8 @@ import { NameCategoryPipe } from '../pipes/name-category-pipe';
     NgForOf,
     RouterLink,
     CommonModule,
-    NameCategoryPipe
+    NameCategoryPipe,
+    HoverHighlightDirective
   ],
   templateUrl: './restaurant-menu-list.html',
   styleUrl: './restaurant-menu-list.css',

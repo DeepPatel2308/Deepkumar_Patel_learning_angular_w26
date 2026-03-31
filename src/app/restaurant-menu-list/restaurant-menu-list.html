@@ -1,4 +1,4 @@
-<br><div *ngFor="let item of menuList" class="menu-item">
+<br><div *ngFor="let item of menuList" class="menu-item" [appHoverHighlight] = "'lightgrey'">
   <p align="center"><strong>{{ item | nameCategory }}</strong> - {{ item.Price | currency: 'CAD': "symbol-narrow"}}<br>
     Category: {{item.Category | uppercase}}<br>
   Description: {{item.Description}}<br>
