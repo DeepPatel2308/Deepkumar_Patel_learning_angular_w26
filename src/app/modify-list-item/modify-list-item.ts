@@ -6,6 +6,7 @@ import { RestaurantMenuService} from '../services/restaurant-menu';
 import { Restaurant } from '../models/restaurant.Menu';
 import {restaurantMenuList} from '../data/mock-restaurant-menu';
 import {NgIf} from '@angular/common';
+import {AutoFocusDirective} from '../directives/auto-focus';
 
 
 @Component({
@@ -16,6 +17,7 @@ import {NgIf} from '@angular/common';
     ReactiveFormsModule,
     RouterLink,
     RouterLinkActive,
+    AutoFocusDirective,
   ],
   templateUrl: './modify-list-item.html',
   styleUrl: './modify-list-item.css',

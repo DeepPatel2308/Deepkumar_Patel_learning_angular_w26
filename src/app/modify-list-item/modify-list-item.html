@@ -1,7 +1,7 @@
 <form [formGroup]="listForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="Id">ID</label>
-    <input type="number" id="Id" name="Id" formControlName="Id" required />
+    <input type="number" id="Id" name="Id" formControlName="Id" required appAutoFocus/>
   </div>
   <div class="form-group">
     <label for="Name">Name</label>
