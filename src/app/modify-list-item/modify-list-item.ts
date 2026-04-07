@@ -8,6 +8,10 @@ import {restaurantMenuList} from '../data/mock-restaurant-menu';
 import {NgIf} from '@angular/common';
 import {AutoFocusDirective} from '../directives/auto-focus';
 import {DisableButtonDirective} from '../directives/disable-button';
+import {MatFormField, MatInput, MatInputModule, MatLabel} from '@angular/material/input';
+import {MatButton, MatButtonModule} from '@angular/material/button';
+import {MatCheckbox, MatCheckboxModule} from '@angular/material/checkbox';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 @Component({
@@ -15,11 +19,16 @@ import {DisableButtonDirective} from '../directives/disable-button';
   standalone: true,
   imports: [
     FormsModule,
+    NgIf,
     ReactiveFormsModule,
-    RouterLink,
-    RouterLinkActive,
-    AutoFocusDirective,
     DisableButtonDirective,
+    AutoFocusDirective,
+    MatLabel,
+    MatFormField,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatButtonModule
   ],
   templateUrl: './modify-list-item.html',
   styleUrl: './modify-list-item.css',
@@ -68,8 +77,8 @@ export class ModifyListItem implements OnInit{
     const list: Restaurant = this.listForm.value
 
 
-    if (this.list) {
-      this.restaurantMenuService.update(list).subscribe(() => {this.router.navigate(["/lists"])});
+    if (list.Id) {
+      this.restaurantMenuService.update(list).subscribe(() => this.router.navigate(["/lists"]));
     } else {
       list.Id = this.restaurantMenuService.generateNewId();
       this.restaurantMenuService.create(list).subscribe(() => this.router.navigate(["/lists"]));
@@ -80,15 +89,13 @@ export class ModifyListItem implements OnInit{
   onDelete(): void {
     const id = this.listForm.value.Id;
     if (id) {
-      this.restaurantMenuService.delete(id).subscribe(() => {
+      this.restaurantMenuService.delete(id).subscribe(() =>
         this.router.navigate(['/lists'])
-      });
+      );
     }
   }
 
-  navigateToList(): void {
-    this.router.navigate(['/lists']);
+  lists(): void {
+    this.router.navigate(['/restaurant-menu-list']);
   }
-
-  protected readonly restaurantMenuList = restaurantMenuList;
 }

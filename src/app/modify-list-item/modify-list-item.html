@@ -1,20 +1,23 @@
-<form [formGroup]="listForm" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="Id">ID</label>
-    <input type="number" id="Id" name="Id" formControlName="Id" required appAutoFocus/>
-  </div>
-  <div class="form-group">
-    <label for="Name">Name</label>
-    <input type="text" id="Name" formControlName="Name" required />
-  </div>
-  <div class="form-group">
+<form [formGroup]="listForm" (ngSubmit)="onSubmit()" class="mat-form">
+
+  <mat-form-field appearance="outline" class="formField" disabled>
+    <mat-label>ID</mat-label>
+    <input matInput="number" formControlName="Id" appAutoFocus/>
+  </mat-form-field >
+
+   <mat-form-field appearance="outline" class="formField">
+    <mat-label>Name</mat-label>
+    <input matInput="text" formControlName="Name" required />
+   </mat-form-field>
+
+    <div class="form-group">
     <label for="Price">Price</label>
-    <input type="number" id="Price" formControlName="Price" required />
-  </div>
-  <div class="form-group">
-    <label for="Category">Category</label>
-    <input type="text" id="Category" formControlName="Category" />
-  </div>
+    <input matInput="number" id="Price" formControlName="Price" required />
+    </div>
+  <mat-form-field appearance="outline" class="formField">
+    <mat-label>Category</mat-label>
+    <input matInput type="text" formControlName="Category" />
+  </mat-form-field>
   <div class="form-group">
     <label for="Quantity">Quantity</label>
     <input type="number" id="Quantity" formControlName="Quantity" />
@@ -24,10 +27,12 @@
     <textarea id="Description" formControlName="Description"></textarea>
   </div>
 
-  <button type="submit" [appDisableButton]="listForm">Submit</button>
+  <div class="button">
+    <button mat-raised-button color="primary" type="submit" [appDisableButton]="listForm">Submit</button>
+    <button mat-raised-button color="warn" type="button" (click)="onDelete()">Delete</button>
+    <button mat-button type="button" (click)="lists">Back to Menu</button>
+  </div>
 
-  <button type="button" (click)="onDelete()">Delete</button>
-
-  <button type="button" routerLink="/restaurant-menu-list" routerLinkActive="active">Back to Menu</button>
+    <div *ngIf="error" class="error mat-error">{{ error }}</div>
 
 </form>
